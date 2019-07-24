@@ -11,9 +11,8 @@ page-start {
     width: 100%;
   }
   #players {
-    width: 60%;
-    position: absolute;
-    top: 96px;
+    height: 15vh;
+    width: auto;
   }
   .center {
     display: flex;
@@ -23,11 +22,10 @@ page-start {
     height: 100%;
   }
   #title {
-    margin-top: 64px;
+    margin-top: 15vh;
     margin-bottom: 16px;
   }
   [ion-button] {
-    position: absolute;
-    bottom: 96px;
+    margin-top: 15vh;
   }
 }
