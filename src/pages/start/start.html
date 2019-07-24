@@ -1,10 +1,10 @@
 <ion-content>
   <div class="game">
-    <div class="center animated fadeIn delay-1s">
+    <div class="center animated" [ngClass]="body">
       <img src="./assets/imgs/players.png" id="players" class="animated infinite pulse delay-1s">
       <h1 id="title">Tic Tac Toe</h1>
       <h2>The game</h2>
-      <button ion-button large color="secondary" class="animated delay-2s rubberBand" #playBtn id="playBtn">Jugar</button>
+      <button ion-button large color="secondary" class="animated" [ngClass]="playBtn" (click)="goToPlay()">Jugar</button>
     </div>
   </div>
 </ion-content>

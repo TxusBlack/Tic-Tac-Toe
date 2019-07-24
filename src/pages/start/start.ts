@@ -1,5 +1,5 @@
-import { Component, ViewChildren, QueryList, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -9,32 +9,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 export class StartPage {
 
-  @ViewChildren('playBtn', { read: ElementRef }) playBtn: QueryList<ElementRef>;
+  public playBtn: string = 'delay-2s rubberBand';
+  public body: string = 'fadeIn delay-1s';
   
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams
+    public navCtrl: NavController
   ) {
   }
 
   animateBtn() {
-    this.playBtn.map(el => {
-      // Remove delay
+    const btnAnimated = 'rubberBand'
+    // Remove delay-2s
+    setTimeout(() => {;
+      this.playBtn = btnAnimated;
+    }, 3000);
+    // Set Interval for 5s
+    setInterval(() => {
+      this.playBtn = '';
       setTimeout(() => {
-        el.nativeElement.classList.remove('delay-2s');
-      }, 3000);
-      // Set Interval for 5s
-      setInterval(() => {
-        el.nativeElement.classList.remove('rubberBand');
-        setTimeout(() => {
-          el.nativeElement.classList.add('rubberBand');
-        }, 1000);
-      }, 5000);
-    });
+        this.playBtn = btnAnimated;
+      }, 1000);
+    }, 5000);
+  }
+
+  goToPlay() {
+    this.body = 'zoomOut'
+    setTimeout(() => {
+      this.navCtrl.setRoot('HomePage');
+    }, 400)
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad StartPage', this.playBtn);
     this.animateBtn();
   }
 
