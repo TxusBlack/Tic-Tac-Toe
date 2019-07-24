@@ -1,3 +1,33 @@
 page-start {
-
+  font-family: '8bit';
+  h1, h2 {
+    color: white;
+  }
+  .game {
+    background-image: url('../assets/imgs/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+  }
+  #players {
+    width: 60%;
+    position: absolute;
+    top: 96px;
+  }
+  .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  #title {
+    margin-top: 64px;
+    margin-bottom: 16px;
+  }
+  [ion-button] {
+    position: absolute;
+    bottom: 96px;
+  }
 }
