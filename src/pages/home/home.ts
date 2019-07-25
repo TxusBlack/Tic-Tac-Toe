@@ -12,8 +12,6 @@ export class HomePage {
   public x: number = 0;
   public y: number = 0;
 
-  public titleAnimated: string = '';
-
   constructor(
     public navCtrl: NavController
   ) {
@@ -26,7 +24,6 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.matrix = this.makeMatrix(3, 3, 0);
-    this.titleAnimated = 'fadeIn';
   }
 
 }
