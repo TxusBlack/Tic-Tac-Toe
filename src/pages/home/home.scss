@@ -2,14 +2,22 @@ page-home {
   .btn-space {
     width: 13vh;
     height: 13vh;
-    background-color: #f4f4f4;
+    background-color: white;
     border-radius: 2px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   .table {
     width: 100%;
+  }
+  img {
+    height: 100%;
+    padding: 8px;
+  }
+  .msg-winner {
+    margin-bottom: 34px;
   }
   @media screen and (min-width: 550px) {
     .table {

@@ -12,7 +12,8 @@ export class HomePage {
   public x: number = 0;
   public o: number = 0;
   private count: number = 0;
-  private hasWinner: boolean = false;
+  public winner: string = null;
+  public draw: boolean = false;
 
   constructor(
     public navCtrl: NavController
@@ -25,9 +26,7 @@ export class HomePage {
   }
 
   set(row, col) {
-    console.log('row', row);
-    console.log('col', col);
-    if (this.x < 5 && !this.matrix[row][col] && !this.hasWinner) {
+    if (this.x < 5 && !this.matrix[row][col] && !this.winner) {
       const turn = this.count % 2;
       if (!turn) {
         this.matrix[row][col] = 'x';
@@ -64,20 +63,22 @@ export class HomePage {
     }
 
     // If draw, show a message
-    if (this.x === 5) {
-      console.log('empate');
+    if (this.x === 5 && !this.winner) {
+      this.draw = true;
     }
   }
 
-  setWinner(player) {
+  setWinner(player: string) {
     console.log(`${player} ganó`);
-    this.hasWinner = true;
+    this.winner = player;
   }
 
   newGame() {
     this.matrix = this.makeMatrix(3, 3, 0);
     this.x = 0;
-    this.hasWinner = false;
+    this.count = 0;
+    this.winner = null;
+    this.draw = false;
   }
 
   ionViewWillEnter() {

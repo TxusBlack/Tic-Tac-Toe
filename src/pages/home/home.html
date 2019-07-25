@@ -12,6 +12,8 @@
           </ion-col>
         </ion-row>
       </div>
+      <h2 *ngIf="winner" class="animated tada msg-winner">{{ winner }} ganador</h2>
+      <h2 *ngIf="!winner && draw" class="animated tada msg-winner">empate</h2>
       <button ion-button large color="secondary" (click)="newGame()">Volver a jugar</button>
     </div>
   </div>
