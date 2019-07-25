@@ -22,7 +22,7 @@ export class HomePage {
   }
 
   makeMatrix(rows, columns, el) {
-    return Array(rows).fill(el).map(() => Array(columns).fill(el))
+    this.matrix = Array(rows).fill(el).map(() => Array(columns).fill(el))
   }
 
   set(row, col) {
@@ -74,7 +74,7 @@ export class HomePage {
   }
 
   newGame() {
-    this.matrix = this.makeMatrix(3, 3, 0);
+    this.makeMatrix(3, 3, 0);
     this.x = 0;
     this.count = 0;
     this.winner = null;
@@ -82,7 +82,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-    this.matrix = this.makeMatrix(3, 3, 0);
+    this.makeMatrix(3, 3, 0);
   }
 
 }
