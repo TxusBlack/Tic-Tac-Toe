@@ -1,57 +1,13 @@
 <ion-content>
   <div class="game">
-    <div class="center">
-      <h1 class="animated fadeIn">Tic Tac Toe</h1>
-      <!-- TODO: improve this with ngFor. -->
-      <div style="width: 100%;" padding>
-        <ion-row>
-          <ion-col text-center>
+    <div class="center" *ngIf="matrix">
+      <h1 class="animated" ngClass="titleAnimated">Tic Tac Toe</h1>
+      <div class="table" padding>
+        <ion-row *ngFor="let row of matrix">
+          <ion-col text-center *ngFor="let arr of row">
             <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
-            </button>
-          </ion-col>
-          <ion-col text-center>
-            <button ion-button class="btn-space" color="light">
-              <!-- Imagen jugador -->
+              <!-- Player image -->
+              <img src="./assets/imgs/o.png">
             </button>
           </ion-col>
         </ion-row>
