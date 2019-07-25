@@ -6,7 +6,6 @@
         <ion-row *ngFor="let row of matrix; index as r">
           <ion-col text-center *ngFor="let col of row; index as c">
             <div tappable class="btn-space" color="light" (click)="set(r, c)">
-              <!-- Player image -->
               <img src="./assets/imgs/x.png" *ngIf="col === 'x'">
               <img src="./assets/imgs/o.png" *ngIf="col === 'o'">
             </div>
