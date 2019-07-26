@@ -39,8 +39,14 @@ export class HomePage {
   turnX(row, col) {
     if (this.x < 5 && !this.matrix[row][col] && !this.winner) {
       const turn = this.count % 2;
+      console.log('count', this.count);
+      console.log(turn);
       if (!turn) {
+        console.log('turno de x');
         this.matrix[row][col] = 'x';
+        console.log('row', row);
+        console.log('col', col);
+        console.log('matrix', this.matrix);
         this.x += 1;
       } else {
         this.matrix[row][col] = 'o';
@@ -51,18 +57,21 @@ export class HomePage {
     }
   }
 
-  async playerVsIA(row, col) {
+  playerVsIA(row, col) {
     this.turnX(row, col);
-    this.turnOfPlayerX = false;
-    let obj;
-    obj = this.numRandom();
-    while (this.matrix[obj.row][obj.col]) {
+    if (!this.winner && !this.draw) {
+      this.turnOfPlayerX = false;
+      let obj;
       obj = this.numRandom();
+      while (this.matrix[obj.row][obj.col]) {
+        obj = this.numRandom();
+      }
+      this.matrix[obj.row][obj.col] = 'o';
+      this.o += 1;
+      this.count += 1;
+      this.checkWinner();
+      this.winner ? this.turnOfPlayerX = false : this.turnOfPlayerX = true;
     }
-    this.matrix[obj.row][obj.col] = 'o';
-    this.checkWinner();
-    this.count += 1;
-    this.turnOfPlayerX = true;
   }
 
   numRandom() {
@@ -76,22 +85,22 @@ export class HomePage {
     // Check the Winner in the rows
     for (let i = 0, j = 0; i <= 2; i++) {
       if (this.matrix[i][j] && this.matrix[i][j] === this.matrix[i][j + 1] && this.matrix[i][j + 1] === this.matrix[i][j + 2]) {
-        this.matrix[i][j] === 'x' ? this.setWinner('x') : this.setWinner('o')
+        this.matrix[i][j] === 'x' ? this.setWinner('x') : this.setWinner('o');
       }
     }
 
     // Check the Winner in the columns
     for (let i = 0, j = 0; i <= 2; i++) {
       if (this.matrix[j][i] && this.matrix[j][i] === this.matrix[j + 1][i] && this.matrix[j + 1][i] === this.matrix[j + 2][i]) {
-        this.matrix[j][i] === 'x' ? this.setWinner('x') : this.setWinner('o')
+        this.matrix[j][i] === 'x' ? this.setWinner('x') : this.setWinner('o');
       }
     }
 
     // Check the Winner in the diagonals
     if (this.matrix[0][0] && this.matrix[0][0] === this.matrix[1][1] && this.matrix[1][1] === this.matrix[2][2]) {
-      this.matrix[0][0] === 'x' ? this.setWinner('x') : this.setWinner('o')
+      this.matrix[0][0] === 'x' ? this.setWinner('x') : this.setWinner('o');
     } else if (this.matrix[0][2] && this.matrix[0][2] === this.matrix[1][1] && this.matrix[1][1] === this.matrix[2][0]) {
-      this.matrix[0][2] === 'x' ? this.setWinner('x') : this.setWinner('o')
+      this.matrix[0][2] === 'x' ? this.setWinner('x') : this.setWinner('o');
     }
 
     // If draw, show a message
@@ -111,6 +120,7 @@ export class HomePage {
     this.count = 0;
     this.winner = null;
     this.draw = false;
+    this.turnOfPlayerX = true;
   }
 
   back() {
