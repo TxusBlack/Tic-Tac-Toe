@@ -23,6 +23,35 @@
     <source src="assets/music/Modern_Castle_Atmosphere.mp3" type="audio/mp3">
   </audio>
 
+  <style>
+    @font-face {
+      font-family: '8bit';
+      src: url('assets/fonts/8bit.ttf');
+      font-weight: normal;
+      font-style: normal;
+    }
+    * {
+      font-family: '8bit' !important;
+    }
+    h1, h2 {
+      color: white;
+    }
+    .game {
+      background-image: url('../assets/imgs/background.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+    }
+    .center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  </style>
+
   <!-- un-comment this code to enable service worker
   <script>
     if ('serviceWorker' in navigator) {
