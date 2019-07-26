@@ -39,14 +39,8 @@ export class HomePage {
   turnX(row, col) {
     if (this.x < 5 && !this.matrix[row][col] && !this.winner) {
       const turn = this.count % 2;
-      console.log('count', this.count);
-      console.log(turn);
       if (!turn) {
-        console.log('turno de x');
         this.matrix[row][col] = 'x';
-        console.log('row', row);
-        console.log('col', col);
-        console.log('matrix', this.matrix);
         this.x += 1;
       } else {
         this.matrix[row][col] = 'o';
@@ -130,7 +124,6 @@ export class HomePage {
   ionViewWillEnter() {
     this.makeMatrix(3, 3, 0);
     this.players = this.navParams.get('players');
-    console.log(this.players);
   }
 
 }
