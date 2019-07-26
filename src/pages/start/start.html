@@ -4,7 +4,8 @@
       <img src="./assets/imgs/players.png" id="players" class="animated infinite pulse delay-1s">
       <h1 id="title">Tic Tac Toe</h1>
       <h2>The game</h2>
-      <button ion-button large color="secondary" class="animated" [ngClass]="playBtn" (click)="goToPlay()">Jugar</button>
+      <button ion-button large color="secondary" class="two-players-btn animated" [ngClass]="playBtn" (click)="goToPlay(true)">1 jugador</button>
+      <button ion-button large color="secondary" class="ia-btn animated" [ngClass]="playBtn" (click)="goToPlay(false)">2 jugadores</button>
     </div>
   </div>
 </ion-content>

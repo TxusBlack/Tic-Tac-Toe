@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -14,9 +14,12 @@ export class HomePage {
   private count: number = 0;
   public winner: string = null;
   public draw: boolean = false;
+  private players: boolean = true;
+  private turnOfPlayerX: boolean = true;
 
   constructor(
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public navParams: NavParams
   ) {
     
   }
@@ -26,6 +29,14 @@ export class HomePage {
   }
 
   set(row, col) {
+    if (this.players) {
+      this.turnOfPlayerX ? this.playerVsIA(row, col) : null;
+    } else {
+      this.turnX(row, col);
+    }
+  }
+
+  turnX(row, col) {
     if (this.x < 5 && !this.matrix[row][col] && !this.winner) {
       const turn = this.count % 2;
       if (!turn) {
@@ -37,6 +48,27 @@ export class HomePage {
       }
       this.checkWinner();
       this.count += 1;
+    }
+  }
+
+  async playerVsIA(row, col) {
+    this.turnX(row, col);
+    this.turnOfPlayerX = false;
+    let obj;
+    obj = this.numRandom();
+    while (this.matrix[obj.row][obj.col]) {
+      obj = this.numRandom();
+    }
+    this.matrix[obj.row][obj.col] = 'o';
+    this.checkWinner();
+    this.count += 1;
+    this.turnOfPlayerX = true;
+  }
+
+  numRandom() {
+    return {
+      row: Math.floor(Math.random() * 3),
+      col: Math.floor(Math.random() * 3)
     }
   }
 
@@ -81,8 +113,14 @@ export class HomePage {
     this.draw = false;
   }
 
+  back() {
+    this.navCtrl.setRoot('StartPage');
+  }
+
   ionViewWillEnter() {
     this.makeMatrix(3, 3, 0);
+    this.players = this.navParams.get('players');
+    console.log(this.players);
   }
 
 }
