@@ -32,10 +32,10 @@ export class StartPage {
     }, 5000);
   }
 
-  goToPlay() {
+  goToPlay(players: boolean) {
     this.body = 'zoomOut'
     setTimeout(() => {
-      this.navCtrl.setRoot('HomePage');
+      this.navCtrl.setRoot('HomePage', { players: players });
     }, 400)
   }
 
